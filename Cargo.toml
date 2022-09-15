@@ -1,0 +1,35 @@
+[package]
+name = "wasm_synth"
+description = "A web-audio compatible synth template."
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.83"
+cpal = {version = "0.14.0", features = ["wasm-bindgen"] }
+console_error_panic_hook = { version = "0.1.6", optional = true }
+wee_alloc = {version = "0.4.5", optional = true}
+fundsp = "0.9.0"
+anyhow = "1.0.62"
+eframe = "0.19.0"
+js-sys = "*"
+
+[build]
+target = "web"
+
+[profile.release]
+opt-level = "z"
+lto = true
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-Oz"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies.web-sys]
+version = "0.3.22"
+features = ["console"]
