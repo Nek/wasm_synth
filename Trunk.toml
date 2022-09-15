@@ -5,6 +5,3 @@ import init, * as wasm from '{base}{js}'
 init('{base}{wasm}').then(() => {window.START_TRUNK(wasm)})
 </script>
 '''
-
-
-# '<script type="module">import init from "{base}{js}";console.log("!!!");init("{base}{wasm}");</script>'
